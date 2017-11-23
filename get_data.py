@@ -1,6 +1,6 @@
 # Self-dialogue corpus
-# URL
-# Citation 2017
+# https://github.com/jfainberg/self_dialogue_corpus
+# 2017
 import argparse, logging, csv, os, sys
 import random, string
 from glob import glob
@@ -8,15 +8,14 @@ from collections import defaultdict
 logging.basicConfig(format='%(asctime)s - %(name)s - %(message)s',
                     datefmt='%m/%d/%Y %I:%M:%S %p', 
                     level=logging.INFO)
-logger = logging.getLogger('self_dialogue_corpus')
+logger = logging.getLogger('Self dialogue corpus')
 
 def main():
     args = parse_args()
-    random.seed(args.seed)
     logger.info("Will write data to {0}.".format(args.outDir))
 
     # Create output directories
-    train_dir, val_dir, test_dir = create_dirs(args.outDir)
+    train_dir = create_dirs(args.outDir)
 
     if os.path.isfile("blocked_workers.txt"):
         with open("blocked_workers.txt") as f:
@@ -41,16 +40,11 @@ def main():
 
     logger.info("Read {0} dialogues".format(len(dialogues.keys())))
 
-    # Select keys
-    train_keys, val_keys, test_keys = select_keys(dialogues, args.order, args.split)
-
     # Write data
     logger.info("Writing dialogues...")
-    write_dialogues(dialogues, train_keys, train_dir, args)
-    write_dialogues(dialogues, val_keys, val_dir, args)
-    write_dialogues(dialogues, test_keys, test_dir, args)
+    write_dialogues(dialogues, dialogues.keys(), train_dir, args)
 
-    logger.info("Done writing to {0}, {1}, and {2}".format(train_dir, val_dir, test_dir))
+    logger.info("Done writing to {0}.".format(train_dir))
 
 def write_dialogues(dialogues, keys, directory, args):
     """Writes dialogues given keys to directory."""
@@ -90,39 +84,6 @@ def write_dialogues(dialogues, keys, directory, args):
 
         counter += 1
 
-def select_keys(dialogues, order, split):
-    """Returns dialogue keys for splitting the dataset given
-    order and split."""
-    total_convos = len(dialogues)
-    train_upper = total_convos * split[0] // 100
-    val_upper = train_upper + (total_convos * split[1] // 100)
-    keys = dialogues.keys()
-    if order == "random":
-        random.shuffle(keys)
-        train_keys = keys[:train_upper]
-        val_keys = keys[train_upper:val_upper]
-        test_keys = keys[val_upper:]
-    elif order == "assignment_id":
-        keys.sort()
-        train_keys = keys[:train_upper]
-        val_keys = keys[train_upper:val_upper]
-        test_keys = keys[val_upper:]
-    elif order == "time":
-        # map Assignment IDs to CreationTime
-        time_hitid_map = defaultdict(list)
-        for assignment_id in keys:
-            time_hitid_map[dialogues[assignment_id]['CreationTime']].append(assignment_id)
-        time_keys = time_hitid_map.keys()
-        time_keys.sort()
-        sorted_hitid_keys = []
-        for k in time_keys:
-            sorted_hitid_keys.extend(time_hitid_map[k])
-        train_keys = sorted_hitid_keys[:train_upper]
-        val_keys = sorted_hitid_keys[train_upper:val_upper]
-        test_keys = sorted_hitid_keys[val_upper:]
-
-    return train_keys, val_keys, test_keys
-
 def read_data(directory, blocked_workers=[]):
     """Reads data from CSVs in a directory and 
     returns a dictionary indexed by assignment IDs.
@@ -142,43 +103,24 @@ def read_data(directory, blocked_workers=[]):
 
 def create_dirs(root_dir):
     """Create training directories. Returns their paths."""
-    train_dir = "{0}/train".format(root_dir)
-    val_dir = "{0}/val".format(root_dir)
-    test_dir = "{0}/test".format(root_dir)
+    train_dir = "{0}/".format(root_dir)
 
-    for d in [train_dir, val_dir, test_dir]:
+    for d in [train_dir]:
         if not os.path.exists(d):
             os.makedirs(d)
 
-    return train_dir, val_dir, test_dir
+    return train_dir 
 
 def parse_args():
     """Parse input arguments."""
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-            description="""Writes dialogues from the corpus.""")
+            description="""Prepares data directories with dialogues from the
+            self-dialogue corpus.""",
+            epilog="Example usage: python get_data.py corpus formatted_data")
     parser.add_argument("inDir", 
             help="Source data directory.")
     parser.add_argument("outDir",
-            help="Where to store output data.")
-    parser.add_argument("--order", 
-            choices=["assignment_id", "random", "time"], default="random",
-            help="""How to split data: by order of sorted convo assignment ID, 
-            creation time or random (see --seed).""")
-    parser.add_argument("--seed", type=int, default=123,
-            help="Only relevant with --order random.")
-    parser.add_argument("--split", nargs=3, type=int, default=[90, 5, 5],
-            help="""Train, val, test split. Must sum to 100.
-            Takes three space separated integers.
-            E.g. --split 80 10 10""")
-    parser.add_argument("--output-naming", type=str, default="integer",
-            choices=["integer", "assignment_id"],
-            help="""Whether to name output files with integers (1 to
-            total dialogues) or whether to name by assignment_id.
-            E.g. '43.txt'.""")
-    parser.add_argument("--remove-punctuation", action="store_true",
-            help="""Remove punctuation from output.""")
-    parser.add_argument("--set-case", choices=["original", "upper", "lower"],
-            default="original", help="""Set output case.""")
+            help="Where to store output data directories (train, dev, test).")
     parser.add_argument("--exclude-topic", action='append',
             default=[],
             help="""Exclude one or more topics, e.g.:
@@ -187,9 +129,17 @@ def parse_args():
             default=[],
             help="""If set will only include one or more given topics, e.g.:
             --include-only music --include-only nfl_football""")
+    parser.add_argument("--output-naming", type=str, default="integer",
+            choices=["integer", "assignment_id"],
+            help="""Whether to name output files with integers (1 to
+            the number of total dialogues) or whether to name by assignment_id.
+            E.g. '43.txt'.""")
+    parser.add_argument("--remove-punctuation", action="store_true",
+            help="""Remove punctuation from output.""")
+    parser.add_argument("--set-case", choices=["original", "upper", "lower"],
+            default="original", help="""Set output case.""")
     
     args = parser.parse_args()
-    assert sum(args.split) == 100, "--split arguments must sum to 100"
     return args
 
 if __name__ == '__main__':
