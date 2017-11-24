@@ -1,4 +1,4 @@
-# The Self-dialogue corpus
+# The Self-dialogue Corpus
 This is an early release of the Self-dialogue corpus.
 
 ### Using the data
