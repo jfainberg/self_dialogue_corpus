@@ -19,9 +19,9 @@ Optional arguments:
 ### Citation
 For research using this data, please cite:
 ```
-@article{damonte2017edina,
+@article{krause2017edina,
   title={Edina: Building an Open Domain Socialbot with Self-dialogues},
-  author={Damonte, Ben Krause Marco and Dobre, Mihai and Duma, Daniel and Fainberg, Joachim and Fancellu, Federico and Kahembwe, Emmanuel and Webber, Jianpeng Cheng Bonnie},
+  author={Krause, Ben and Damonte, Marco and Dobre, Mihai and Duma, Daniel and Fainberg, Joachim and Fancellu, Federico and Kahembwe, Emmanuel and Cheng, Jianpeng and Webber, Bonnie},
   journal={arXiv preprint arXiv:1709.09816},
   year={2017}
 }
