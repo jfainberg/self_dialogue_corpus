@@ -1,9 +1,9 @@
-# The Self-dialogue Corpus
-This is an early release of the Self-dialogue corpus.
+# The Self dialogue corpus
+This is an early release of the Self-dialogue corpus containing 24,165 conversations containing 3,653,313 words across 23 topics.
 
 ### Using the data
 * `corpus` contains the raw CSVs from Amazon Mechanical Turk, sorted by individual tasks (topics);
-* `blocked_workers.txt` lists workers who did not comply with the requirements of the tasks;
+* `blocked_workers.txt` lists workers who did not comply with the requirements of the tasks, these are omitted by default;
 * `get_data.py` is a preprocessing script which will format the CSVs into text, along with various options (see below).
 
 #### `get_data.py`
@@ -19,9 +19,9 @@ Optional arguments:
 ### Citation
 For research using this data, please cite:
 ```
-@article{krause2017edina,
+@article{damonte2017edina,
   title={Edina: Building an Open Domain Socialbot with Self-dialogues},
-  author={Krause, Ben and Damonte, Marco and Dobre, Mihai and Duma, Daniel and Fainberg, Joachim and Fancellu, Federico and Kahembwe, Emmanuel and Cheng, Jianpeng and Webber, Bonnie},
+  author={Damonte, Ben Krause Marco and Dobre, Mihai and Duma, Daniel and Fainberg, Joachim and Fancellu, Federico and Kahembwe, Emmanuel and Webber, Jianpeng Cheng Bonnie},
   journal={arXiv preprint arXiv:1709.09816},
   year={2017}
 }
