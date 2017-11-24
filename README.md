@@ -1,4 +1,4 @@
-# The Self dialogue corpus
+# The Self-dialogue Corpus
 This is an early release of the Self-dialogue corpus containing 24,165 conversations containing 3,653,313 words across 23 topics.
 
 ### Using the data
