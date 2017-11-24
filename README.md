@@ -1,5 +1,5 @@
 # The Self-dialogue Corpus
-This is an early release of the Self-dialogue corpus containing 24,165 conversations containing 3,653,313 words across 23 topics.
+This is an early release of the Self-dialogue Corpus containing 24,165 conversations, or 3,653,313 words, across 23 topics.
 
 ### Using the data
 * `corpus` contains the raw CSVs from Amazon Mechanical Turk, sorted by individual tasks (topics);
