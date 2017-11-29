@@ -1,6 +1,7 @@
 # Self-dialogue corpus
 # https://github.com/jfainberg/self_dialogue_corpus
 # 2017
+from __future__ import absolute_import, division, print_function
 import argparse, logging, csv, os, sys
 import random, string
 from glob import glob
@@ -75,7 +76,8 @@ def write_dialogues(dialogues, keys, directory, args):
 
                 # Punctutation
                 if args.remove_punctuation:
-                    sentence = sentence.translate(None, string.punctuation)
+                    for ch in string.punctuation:
+                        sentence = sentence.replace(ch, "")
 
                 if sentence == "{}":
                     # Sometimes empty responses from Amazon would just include "{}"
