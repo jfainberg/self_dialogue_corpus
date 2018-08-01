@@ -4,7 +4,7 @@ This is an early release of the Self-dialogue Corpus containing 24,165 conversat
 ### Using the data
 * `corpus` contains the raw CSVs from Amazon Mechanical Turk, sorted by individual tasks (topics);
 * `blocked_workers.txt` lists workers who did not comply with the requirements of the tasks, these are omitted by default;
-* `get_data.py` is a preprocessing script which will format the CSVs into text (by default saved to a new directory called "dialogues"), along with various options (see below).
+* `get_data.py` is a preprocessing script which will format the CSVs into text (by default saved to `dialogues`), along with various options (see below).
 
 #### `get_data.py`
 Example usage: `python get_data.py`.
