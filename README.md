@@ -7,7 +7,7 @@ This is an early release of the Self-dialogue Corpus containing 24,165 conversat
 * `get_data.py` is a preprocessing script which will format the CSVs into text, along with various options (see below).
 
 #### `get_data.py`
-Example usage: `python get_data.py corpus formatted_corpus`.
+Example usage: `python get_data.py`.
 
 Optional arguments:
 * `--output-naming` whether to name output files with integers (`integer`) or by assignment_id (`assignment_id`);
