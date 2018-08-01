@@ -7,7 +7,7 @@ This is an early release of the Self-dialogue Corpus containing 24,165 conversat
 * `get_data.py` is a preprocessing script which will format the CSVs into text (by default saved to `dialogues`), along with various options (see below).
 
 #### `get_data.py`
-Example usage: `python get_data.py`.
+Example usage: `python get_data.py`. This will by default read from `corpus` and write to `dialogues`. 
 
 Optional arguments:
 * `--inDir` Directory to read corpus from
