@@ -119,10 +119,10 @@ def parse_args():
             description="""Prepares data directories with dialogues from the
             self-dialogue corpus.""",
             epilog="Example usage: python get_data.py corpus formatted_data")
-    parser.add_argument("inDir", 
-            help="Source data directory.")
-    parser.add_argument("outDir",
-            help="Where to store output data directories (train, dev, test).")
+    parser.add_argument("--inDir", 
+            help="Source data directory.",default="corpus")
+    parser.add_argument("--outDir",
+            help="Where to store output data directories (train, dev, test).",default="dialogues")
     parser.add_argument("--exclude-topic", action='append',
             default=[],
             help="""Exclude one or more topics, e.g.:
