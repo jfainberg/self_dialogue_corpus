@@ -118,7 +118,7 @@ def parse_args():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter,
             description="""Prepares data directories with dialogues from the
             self-dialogue corpus.""",
-            epilog="Example usage: python get_data.py corpus formatted_data")
+            epilog="Example usage: python get_data.py")
     parser.add_argument("--inDir", 
             help="Source data directory.",default="corpus")
     parser.add_argument("--outDir",
