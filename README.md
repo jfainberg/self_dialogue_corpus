@@ -1,5 +1,5 @@
 # The Self-dialogue Corpus
-This is an early release of the Self-dialogue Corpus containing 24,165 conversations, or 3,653,313 words, across 23 topics.
+This is an early release of the Self-dialogue Corpus containing 24,165 conversations, or 3,653,313 words, across 23 topics. For more information on the data, please see [our corpus paper](https://arxiv.org/pdf/1809.06641.pdf) or [our submission to the Alexa Prize](http://alexaprize.s3.amazonaws.com/2017/technical-article/edina.pdf).
 
 ### Using the data
 * `corpus` contains the raw CSVs from Amazon Mechanical Turk, sorted by individual tasks (topics);
@@ -21,10 +21,16 @@ Optional arguments:
 ### Citation
 For research using this data, please cite:
 ```
+@article{fainberg2018talking,
+  title={Talking to myself: self-dialogues as data for conversational agents},
+  author={Fainberg, Joachim and Krause, Ben and Dobre, Mihai and Damonte, Marco and Kahembwe, Emmanuel and Duma, Daniel and Webber, Bonnie and Fancellu, Federico},
+  journal={arXiv preprint arXiv:1809.06641},
+  year={2018}
+}
 @article{krause2017edina,
   title={Edina: Building an Open Domain Socialbot with Self-dialogues},
   author={Krause, Ben and Damonte, Marco and Dobre, Mihai and Duma, Daniel and Fainberg, Joachim and Fancellu, Federico and Kahembwe, Emmanuel and Cheng, Jianpeng and Webber, Bonnie},
-  journal={arXiv preprint arXiv:1709.09816},
+  journal={Alexa Prize Proceedings},
   year={2017}
 }
 ```
