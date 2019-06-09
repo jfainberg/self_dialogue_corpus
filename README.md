@@ -7,7 +7,8 @@ This is an early release of the Self-dialogue Corpus containing 24,165 conversat
 | Category | Count     |
 ---------- | -----------
 | Topics   | 23        |
-| Words    | 3,652,313 |
+| Conversations | 24,165 |
+| Words    | 3,653,313 |
 | Turns    | 141,945   |
 | Unique users | 2,717 |
 | Conversations per user | ~9 |
