@@ -1,6 +1,20 @@
 # The Self-dialogue Corpus
 This is an early release of the Self-dialogue Corpus containing 24,165 conversations, or 3,653,313 words, across 23 topics. For more information on the data, please see [our corpus paper](https://arxiv.org/pdf/1809.06641.pdf) or [our submission to the Alexa Prize](http://alexaprize.s3.amazonaws.com/2017/technical-article/edina.pdf).
 
+### Statistics
+
+
+| Category | Count     |
+---------- | -----------
+| Topics   | 23        |
+| Words    | 3,652,313 |
+| Turns    | 141,945   |
+| Unique users | 2,717 |
+| Conversations per user | ~9 |
+| Unique tokens | 117,068 |
+
+Topics include movies, music, sports, and subtopics within these.
+
 ### Using the data
 * `corpus` contains the raw CSVs from Amazon Mechanical Turk, sorted by individual tasks (topics);
 * `blocked_workers.txt` lists workers who did not comply with the requirements of the tasks, these are omitted by default;
