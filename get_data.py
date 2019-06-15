@@ -1,6 +1,7 @@
 # Self-dialogue corpus
 # https://github.com/jfainberg/self_dialogue_corpus
 # 2017
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function
 import argparse, logging, csv, os, sys
 import random, string
@@ -92,7 +93,7 @@ def read_data(directory, blocked_workers=[]):
     Ignores workers in blocked_workers list."""
     dialogues = {} # indexed by assignment IDs
     for filename in glob("{0}/*.csv".format(directory)):
-        with open(filename) as f:
+        with open(filename, encoding="utf8") as f:
             csvreader = csv.DictReader(f)
             for row in csvreader:
                 # if len(restrict_to) > 0:
