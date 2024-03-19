@@ -1,5 +1,7 @@
 # The Self-dialogue Corpus
-This is an early release of the Self-dialogue Corpus containing 24,165 conversations, or 3,653,313 words, across 23 topics. For more information on the data, please see [our corpus paper](https://arxiv.org/pdf/1809.06641.pdf) or [our submission to the Alexa Prize](http://alexaprize.s3.amazonaws.com/2017/technical-article/edina.pdf).
+[![arXiv](https://img.shields.io/badge/arXiv-1809.06641-b31b1b.svg)](https://arxiv.org/abs/1809.06641)
+
+The Self-dialogue Corpus contains 24,165 conversations, or 3,653,313 words, across 23 topics. For more information on the data, please see [our corpus paper](https://arxiv.org/pdf/1809.06641.pdf) or [our submission to the Alexa Prize](http://alexaprize.s3.amazonaws.com/2017/technical-article/edina.pdf).
 
 ### Statistics
 
